@@ -16,8 +16,6 @@
 {
   width: 100%;
   height: 60px;
-  display: flex;
-  align-items: center;
   border-bottom: 10px solid black;
   margin-bottom: 10px;
 }
@@ -28,12 +26,28 @@
   margin: 0 20px 0 10px;
 }
 
+.tableHeader
+{
+  margin-left: 10px;
+  height: 20px;
+}
+
+.headerSpan
+{
+  width: 50px;
+  height: 100%;
+}
+
 .tableRow
 {
   width: 100%;
   height: 50px;
-  display: flex;
-  align-items: center;
+}
+
+.tableSpan
+{
+  width: 10px;
+  height: 50px;
 }
 
 .tableCell
@@ -41,6 +55,19 @@
   width: 50px;
   height: 100%;
   border: 1px solid gray;
+}
+
+.impassableCell
+{
+  background-color: red;
+}
+
+.creatureCellCircle
+{
+  width: 95%;
+  height: 95%;
+  border: 1px solid black;
+  border-radius: 50%;
 }
 
 #infoPart

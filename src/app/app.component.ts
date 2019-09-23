@@ -19,6 +19,7 @@ interface TableItemInterface {
 export class AppComponent {
 
   itemTypeEI = ItemTypeEnum;
+  stringInstance = String;
 
   isPlayMode: boolean = false;
   rowsValue: number = 5;
@@ -55,7 +56,7 @@ export class AppComponent {
     }
   }
 
-  open(event, row, col) {
+  open(event, row: number, col: number) {
     event.preventDefault();
     this.contextMenuX = event.clientX;
     this.contextMenuY = event.clientY;
@@ -76,7 +77,7 @@ export class AppComponent {
         break;
       case 1:
         this.tableItems[this.contextForRow][this.contextForCol].itemType = ItemTypeEnum.impassable;
-        this.tableItems[this.contextForRow][this.contextForCol].itemText = 'Impass';
+        this.tableItems[this.contextForRow][this.contextForCol].itemText = '';
         break;
       case 2:
         this.tableItems[this.contextForRow][this.contextForCol].itemType = ItemTypeEnum.creature;
@@ -98,6 +99,12 @@ export class AppComponent {
         break;
     }
     this.disableContextMenu();
+  }
+
+  onTableCellDoubleClick(itemType: ItemTypeEnum, rowIndex: number, colIndex: number) {
+    if (itemType === ItemTypeEnum.creature) {
+      console.log(true);
+    }
   }
 
 }

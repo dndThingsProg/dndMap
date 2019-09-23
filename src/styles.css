@@ -24,3 +24,15 @@ app-root
   width: 100%;
   height: 100%;
 }
+
+.rowOfElements, .columnOfElements, .flexElement
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.columnOfElements
+{
+  flex-direction: column;
+}
