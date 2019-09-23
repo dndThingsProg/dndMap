@@ -7,11 +7,11 @@
       <input class="inputsRowInput" [(ngModel)]="colsValue" (ngModelChange)="updateTableFun()">
     </div>
     <div id="tableBlock">
-      <div class="tableHeader rowOfElements" [ngStyle]="{'width.px': (tableItems[0].length * 50)}">
+      <div class="tableHeader rowOfElements" [ngStyle]="{'width.px': colsValue * 50}">
         <span class="headerSpan flexElement" *ngFor="let rowItem of tableItems, let colIndex = index">{{stringInstance.fromCharCode(97 + colIndex)}}</span>
       </div>
       <div class="tableRow rowOfElements"
-           [ngStyle]="{'width.px': (tableItems.length * 50) + 10}"
+           [ngStyle]="{'width.px': (rowsValue * 50) + 10}"
            *ngFor="let rowItem of tableItems, let rowIndex = index"
       >
         <span class="tableSpan flexElement">{{rowIndex + 1}}</span>
@@ -40,7 +40,7 @@
 
 <div *ngIf="isContextMenuVisible"
      class="contextMenu"
-     [ngStyle]="{'left.px': contextMenuX, 'top.px': contextMenuY, 'height.px': contextItems.length * 50}"
+     [ngStyle]="{'left.px': contextMenuX, 'top.px': contextMenuY, 'height.px': colsValue * 50}"
 >
   <div class="contextMenuItem flexElement "
        *ngFor="let cmItem of contextItems, let cmIndex = index"

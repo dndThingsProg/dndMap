@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 enum ItemTypeEnum {
   empty,
@@ -42,7 +43,7 @@ export class AppComponent {
   selectedForCutRow: number = -1;
   selectedForCutCol: number = -1;
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     this.updateTableFun();
   }
 
@@ -103,8 +104,39 @@ export class AppComponent {
 
   onTableCellDoubleClick(itemType: ItemTypeEnum, rowIndex: number, colIndex: number) {
     if (itemType === ItemTypeEnum.creature) {
-      console.log(true);
+      this.openDialog(rowIndex, colIndex);
     }
   }
 
+  openDialog(rowIndex: number, colIndex: number): void {
+    const dialogRef = this.dialog.open(CreatureNameDialogComponent, {
+      width: '250px',
+      data: this.tableItems[rowIndex][colIndex].itemText
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.tableItems[rowIndex][colIndex].itemText = result;
+    });
+  }
+
+}
+
+@Component({
+  selector: 'app-creature-name-dialog',
+  templateUrl: './creature-name-dialog.component.html'
+})
+export class CreatureNameDialogComponent {
+
+  temp: string;
+
+  constructor(
+    public dialogRef: MatDialogRef<CreatureNameDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: string) {
+    this.temp = data;
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close(this.temp);
+  }
 }
