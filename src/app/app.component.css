@@ -1,0 +1,68 @@
+#mainGrid
+{
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 75% 25%;
+}
+
+#editorPart
+{
+  width: 100%;
+  height: 100%;
+}
+
+#inputsRow
+{
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border-bottom: 10px solid black;
+  margin-bottom: 10px;
+}
+
+.inputsRowInput
+{
+  width: 100px;
+  margin: 0 20px 0 10px;
+}
+
+.tableRow
+{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.tableCell
+{
+  width: 50px;
+  height: 100%;
+  border: 1px solid gray;
+}
+
+#infoPart
+{
+  width: 100%;
+  height: 100%;
+}
+
+.contextMenu
+{
+  width: 150px;
+  background-color: lightgray;
+  position: absolute;
+}
+
+.contextMenuItem
+{
+  height: 50px;
+  border-bottom: 1px solid gray;
+}
+
+.contextMenuDisabledItem
+{
+  background-color: darkgray;
+}

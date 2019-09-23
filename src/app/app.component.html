@@ -1,0 +1,34 @@
+<div id="mainGrid" (click)="disableContextMenu()">
+  <div id="editorPart">
+    <div id="inputsRow">
+      <span>Rows:</span>
+      <input class="inputsRowInput" [(ngModel)]="rowsValue" (ngModelChange)="updateTableFun()">
+      <span>Columns:</span>
+      <input class="inputsRowInput" [(ngModel)]="colsValue" (ngModelChange)="updateTableFun()">
+    </div>
+    <div id="tableBlock">
+      <div class="tableRow" *ngFor="let rowItem of tableItems, let rowIndex = index">
+        <div class="tableCell"
+             *ngFor="let cellItem of rowItem, let colIndex = index"
+             (contextmenu)="open($event, rowIndex, colIndex)"
+        >
+          {{cellItem.itemText}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="infoPart"></div>
+</div>
+
+<div *ngIf="isContextMenuVisible"
+     class="contextMenu"
+     [ngStyle]="{'left.px': contextMenuX, 'top.px': contextMenuY, 'height.px': contextItems.length * 50}"
+>
+  <div class="contextMenuItem"
+       *ngFor="let cmItem of contextItems, let cmIndex = index"
+       [ngClass]="{ contextMenuDisabledItem: cmIndex === 4 && selectedForCutRow === -1 }"
+       (click)="onContextMenuClick(cmIndex)"
+  >
+    {{cmItem}}
+  </div>
+</div>
